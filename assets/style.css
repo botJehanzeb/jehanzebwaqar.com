@@ -118,7 +118,6 @@ section h2 { margin: 8px 0 32px; font-size: clamp(32px, 4vw, 44px); font-weight:
 @media (max-width: 720px) {
   .about-grid { grid-template-columns: 1fr; }
   .photo-placeholder { max-width: 260px; }
-  .hero-art { opacity: 0.55; }
 }
 
 /* Hero motion — Feynman diagrams (fd) draw in/out; ATLAS events (ev) grow in slow-mo */
@@ -204,4 +203,12 @@ section h2 { margin: 8px 0 32px; font-size: clamp(32px, 4vw, 44px); font-weight:
 .hero-edge { position: absolute; top: 0; width: 400px; height: 640px; overflow: visible; }
 .hero-edge.left { left: 0; }
 .hero-edge.right { right: 0; }
-@media (max-width: 720px) { .hero-edge { opacity: 0.55; } }
+
+/* Phone hero: animation at near-full strength, soft radial glow behind the text (no card edges) */
+@media (max-width: 720px) {
+  .hero-art, .hero-edge { opacity: 0.9; }
+  .hero-copy::before {
+    content: ""; position: absolute; inset: 8% -25% 4%; z-index: -1; pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(15, 20, 32, 0.94) 0%, rgba(15, 20, 32, 0.8) 42%, rgba(15, 20, 32, 0) 72%);
+  }
+}
